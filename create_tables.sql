@@ -1,0 +1,23 @@
+CREATE DATABASE Hogwarts
+GO
+
+USE Hogwarts
+GO
+
+CREATE TABLE Student(
+  Id INTEGER PRIMARY KEY,
+  Name NVARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Course(
+  Id INTEGER PRIMARY KEY,
+  Name NVARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE Enrollment(
+  StudentId INT,
+  CourseId INT,
+  PRIMARY KEY (StudentId, CourseId),
+  FOREIGN KEY (StudentId) REFERENCES Student(Id),
+  FOREIGN KEY (CourseId) REFERENCES Course(Id)
+);
